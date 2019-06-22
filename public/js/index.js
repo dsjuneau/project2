@@ -1,8 +1,21 @@
-// Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+
+console.log("hello Working");
+
+$("#generateQuest").on("click", () => {
+  var queryURL = "https://opentdb.com/api.php?amount=50&type=multiple";
+  $.ajax({
+    url: queryURL,
+    method: "GET" 
+  }).then((response) => {
+    var data = response.results[0].question;
+    console.log(data);
+    $(".card-text").append(data);
+  })
+});
 
 // The API object contains methods for each kind of request we'll make
 var API = {
