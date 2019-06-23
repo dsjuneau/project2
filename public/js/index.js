@@ -3,6 +3,44 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+var $teamName = $("#team-name");
+var $submitBtn = $("#submit");
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener('mousemove', e => {
+    cursor.setAttribute("style", "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;")
+})
+
+var handleFormSubmit = function(event) {
+ event.preventDefault();
+ var teamName = {
+   text: $teamName.val().trim()
+ };
+ if (!teamName.text) {
+   alert("You must enter a team name!");
+   return;
+ }
+ $.ajax({
+   headers: {
+     "Content-Type": "application/json"
+   },
+   type: "POST",
+   url: "api/team",
+   data: JSON.stringify(teamName)
+ }).then(function(response) {
+   console.log(response);
+ });
+ window.location.assign("player/1");
+};
+
+// Add event listeners to the submit and delete buttons
+$submitBtn.on("click", handleFormSubmit);
+$("#startGame").on("click", (e) => {
+  e.preventDefault();
+  window.location.href = "/quiz";
+})
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
