@@ -18,7 +18,7 @@ $("#startGame").on("click", e => {
   var teamName = {
     text: $teamName.val().trim()
   };
-  console.log(teamName);
+
   if (!teamName.text) {
     alert("You must enter a team name!");
     return;
@@ -32,7 +32,7 @@ $("#startGame").on("click", e => {
     data: JSON.stringify(teamName)
   }).then(function(response) {
     console.log(response);
+    console.log("in here now");
+    //window.location.href = "/quiz";
   });
-  console.log("in here now");
-  //window.location.href = "/quiz";
 });

@@ -8,10 +8,10 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Question.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Add a team to the team database
+  app.post("/api/team", function(req, res) {
+    db.Team.create({ teamName: req.body.text }).then(function(dbTeamInfo) {
+      res.json(dbTeamInfo);
     });
   });
 
