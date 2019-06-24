@@ -8,6 +8,18 @@ module.exports = function(app) {
     });
   });
 
+  // Add a question to the team database
+  app.post("/api/questions", function(req, res) {
+    db.Question.create({
+      query: req.body.query,
+      a: req.body.a,
+      b: req.body.b,
+      c: req.body.c,
+      d: req.body.d,
+      correct: req.body.correct
+    });
+  });
+
   // Add a team to the team database
   app.post("/api/team", function(req, res) {
     db.Team.create({ teamName: req.body.text }).then(function(dbTeamInfo) {
