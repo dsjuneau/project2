@@ -1,4 +1,5 @@
 let questionGlobal;
+$(".card-text").html("");
 
 $("#generateQuest").on("click", () => {
   var queryURL = "https://opentdb.com/api.php?amount=50&type=multiple";
@@ -29,7 +30,7 @@ $("#generateQuest").on("click", () => {
     } else if (question.d === question.correct) {
       question.correct = "d";
     }
-    console.log(question);
+
     questionGlobal = question;
     $(".card-text").html(
       question.query +
@@ -58,10 +59,12 @@ shuffle = a => {
 
 $("#subQuestion").on("click", e => {
   e.preventDefault();
-  $.ajax({
-    url: "/api/questions",
-    method: "POST",
-    data: questionGlobal
-  });
-  // console.log(questionGlobal);
+  if ($(".card-text").html() !== "") {
+    $.ajax({
+      url: "/api/questions",
+      method: "POST",
+      data: questionGlobal
+    });
+    $(".card-text").html("");
+  }
 });
