@@ -30,8 +30,19 @@ module.exports = function(app) {
     });
   });
 
+  // Get question from the database
   app.get("/api/quiz/:id/:qid", function(req, res) {
     db.Question.findAll({ where: { id: req.params.qid } }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  // Send question to the database
+  app.post("/api/answer/:id/:qid/:choice", function(req, res) {
+    // Fix this code to check for a correct answer, update scores,
+    // and respond to the user
+
+    db.Question.findAll({}).then(function(data) {
       res.json(data);
     });
   });

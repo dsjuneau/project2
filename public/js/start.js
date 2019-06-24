@@ -39,3 +39,16 @@ $("#getQuestion").on("click", () => {
     });
   }
 });
+
+$("p").on("click", function() {
+  let choice = $(this).attr("id");
+  $.ajax({
+    headers: {
+      "Content-Type": "application/json"
+    },
+    type: "POST",
+
+    // fix this api call to include team ID, question ID and choice
+    url: "/api/answer/" + choice
+  }).then(function(data) {});
+});
