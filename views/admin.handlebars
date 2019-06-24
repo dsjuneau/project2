@@ -28,8 +28,18 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Current Users
+                        Teams:
                     </a>
+                </li>
+                {{#each teams}}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        {{this.id}}. {{this.teamName}} Score:{{this.score}}
+                    </a>
+                </li>
+
+                {{/each}}
             </ul>
         </nav>
     </div>

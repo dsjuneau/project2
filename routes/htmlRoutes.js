@@ -7,22 +7,16 @@ module.exports = function(app) {
   });
 
   app.get("/admin", function(req, res) {
-    res.render("admin");
+    db.Team.findAll({}).then(function(data) {
+      var teams = {
+        teams: data
+      };
+      res.render("admin", teams);
+    });
   });
 
   app.get("/quiz", function(req, res) {
     res.render("quiz");
-  });
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Question.findOne({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
   });
 
   // Render 404 page for any unmatched routes
