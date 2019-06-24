@@ -51,11 +51,12 @@ $("p").on("click", function() {
     },
     type: "POST",
     url: answerURL
-  }).then(function(data) {});
+  }).then(function(data) {
+    $("#query").html(data.answer);
+    $("#a").html("");
+    $("#b").html("");
+    $("#c").html("");
+    $("#d").html("");
+  });
   // Add in the response here and update the score.
-  $("#query").html("Checking answer...");
-  $("#a").html("");
-  $("#b").html("");
-  $("#c").html("");
-  $("#d").html("");
 });

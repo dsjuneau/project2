@@ -37,8 +37,20 @@ module.exports = function(app) {
     });
   });
 
-  // Send question to the database
+  // Get Correct answer, compare to choice.  If correct
   app.post("/api/answer/:id/:qid/:choice", function(req, res) {
+    let answer;
+    db.Question.findAll({ where: { id: req.params.qid } }).then(function(data) {
+      if (data[0].correct === req.params.choice) {
+        answer = true;
+        res.json({ answer: "You are correct!" });
+      } else {
+        answer = false;
+        res.json({
+          answer: "Wrong.  The correct answer was " + data[0].correct
+        });
+      }
+    });
     // Fix this code to check for a correct answer, update scores,
     // and respond to the user
     console.log(req.params.id, req.params.qid, req.params.choice);
