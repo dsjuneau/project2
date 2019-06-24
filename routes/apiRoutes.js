@@ -41,10 +41,7 @@ module.exports = function(app) {
   app.post("/api/answer/:id/:qid/:choice", function(req, res) {
     // Fix this code to check for a correct answer, update scores,
     // and respond to the user
-
-    db.Question.findAll({}).then(function(data) {
-      res.json(data);
-    });
+    console.log(req.params.id, req.params.qid, req.params.choice);
   });
 
   // Delete an example by id

@@ -42,13 +42,20 @@ $("#getQuestion").on("click", () => {
 
 $("p").on("click", function() {
   let choice = $(this).attr("id");
+  let teamId = localStorage.getItem("teamId");
+  let questionId = localStorage.getItem("qid");
+  let answerURL = "/api/answer/" + teamId + "/" + questionId + "/" + choice;
   $.ajax({
     headers: {
       "Content-Type": "application/json"
     },
     type: "POST",
-
-    // fix this api call to include team ID, question ID and choice
-    url: "/api/answer/" + choice
+    url: answerURL
   }).then(function(data) {});
+  // Add in the response here and update the score.
+  $("#query").html("Checking answer...");
+  $("#a").html("");
+  $("#b").html("");
+  $("#c").html("");
+  $("#d").html("");
 });
