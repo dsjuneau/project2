@@ -57,6 +57,9 @@ $("p").on("click", function() {
     $("#b").html("");
     $("#c").html("");
     $("#d").html("");
+    setTimeout(function() {
+      location.reload();
+    }, 2000);
   });
   // Add in the response here and update the score.
 });

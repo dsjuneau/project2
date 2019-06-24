@@ -39,8 +39,8 @@ module.exports = function(app) {
 
   // Get Correct answer, compare to choice.  If correct
   app.post("/api/answer/:id/:qid/:choice", function(req, res) {
-    let answer;
     db.Question.findAll({ where: { id: req.params.qid } }).then(function(data) {
+      let answer;
       if (data[0].correct === req.params.choice) {
         answer = true;
         res.json({ answer: "You are correct!" });
@@ -50,7 +50,16 @@ module.exports = function(app) {
           answer: "Wrong.  The correct answer was " + data[0].correct
         });
       }
+
+      db.Team.findAll({ where: { id: req.params.id } }).then(function(data) {
+        let score;
+        if (answer) {
+          score = parseInt(data[0].score) + 10;
+          db.Team.update({ score }, { where: { id: req.params.id } });
+        }
+      });
     });
+
     // Fix this code to check for a correct answer, update scores,
     // and respond to the user
     console.log(req.params.id, req.params.qid, req.params.choice);
