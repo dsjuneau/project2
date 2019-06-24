@@ -15,7 +15,6 @@ $("#getQuestion").on("click", () => {
   let questionURL =
     "/api/quiz/" + localStorage.getItem("teamId") + "/" + questionId;
   if (questionId < 6) {
-    console.log("clicked");
     $.ajax({
       headers: {
         "Content-Type": "application/json"
