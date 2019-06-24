@@ -13,6 +13,7 @@ document.addEventListener("mousemove", e => {
 //Event listener for Modal
 //Sends team name to the database and receives back the team ID
 //Then stores the ID in local storage for later use
+// localStorage.getItem("teamId"); to get team id
 $("#startGame").on("click", e => {
   e.preventDefault();
   var teamName = {
@@ -31,8 +32,7 @@ $("#startGame").on("click", e => {
     url: "api/team",
     data: JSON.stringify(teamName)
   }).then(function(response) {
-    console.log(response);
-    console.log("in here now");
-    //window.location.href = "/quiz";
+    localStorage.setItem("teamId", response.id);
+    window.location.href = "/quiz";
   });
 });
