@@ -30,6 +30,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/quiz/:id/:qid", function(req, res) {
+    db.Question.findAll({ where: { id: req.params.qid } }).then(function(data) {
+      res.json(data);
+    });
+  });
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.Question.destroy({ where: { id: req.params.id } }).then(function(

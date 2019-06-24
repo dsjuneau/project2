@@ -24,24 +24,6 @@ module.exports = function(app) {
       res.render("quiz", team);
     });
   });
-  app.get("/quiz/:id/:qid", function(req, res) {
-    db.Team.findAll({ where: { id: req.params.id } }).then(function(data) {
-      var team = {
-        teamName: data[0].teamName,
-        score: data[0].score
-      };
-      db.Question.findAll({ where: { id: req.params.qid } }).then(function(
-        data
-      ) {
-        team.query = data[0].query;
-        team.a = data[0].a;
-        team.b = data[0].b;
-        team.c = data[0].c;
-        team.d = data[0].d;
-        res.render("quiz", team);
-      });
-    });
-  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

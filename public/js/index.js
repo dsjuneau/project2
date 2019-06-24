@@ -32,6 +32,7 @@ $("#startGame").on("click", e => {
     url: "api/team",
     data: JSON.stringify(teamName)
   }).then(function(response) {
+    localStorage.removeItem("qid");
     localStorage.setItem("teamId", response.id);
     window.location.href = "/quiz/" + localStorage.getItem("teamId");
   });
