@@ -1,9 +1,12 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Question.findAll({}).then(function(dbExamples) {
+  // Get question by id
+  // The user's quiz.js file has to track the ID to get the question
+  app.get("/api/questions/:id", function(req, res) {
+    db.Question.findAll({ where: { id: req.params.id } }).then(function(
+      dbExamples
+    ) {
       res.json(dbExamples);
     });
   });

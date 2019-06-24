@@ -15,8 +15,14 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/quiz", function(req, res) {
-    res.render("quiz");
+  app.get("/quiz/:id", function(req, res) {
+    db.Team.findAll({ where: { id: req.params.id } }).then(function(data) {
+      var team = {
+        teamName: data[0].teamName,
+        score: data[0].score
+      };
+      res.render("quiz", team);
+    });
   });
 
   // Render 404 page for any unmatched routes

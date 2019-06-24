@@ -33,6 +33,6 @@ $("#startGame").on("click", e => {
     data: JSON.stringify(teamName)
   }).then(function(response) {
     localStorage.setItem("teamId", response.id);
-    window.location.href = "/quiz";
+    window.location.href = "/quiz/" + localStorage.getItem("teamId");
   });
 });
