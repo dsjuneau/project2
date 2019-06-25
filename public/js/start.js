@@ -1,3 +1,8 @@
+$("#a").hide();
+$("#b").hide();
+$("#c").hide();
+$("#d").hide();
+
 function getQuestionId() {
   if (localStorage.getItem("qid") === null) {
     localStorage.setItem("qid", "1");
@@ -26,12 +31,16 @@ $("#getQuestion").on("click", () => {
       if (data[0] === undefined) {
         localStorage.setItem("qid", questionId - 1);
         $("#query").html("Waiting for question...");
-        $("#a").html("");
-        $("#b").html("");
-        $("#c").html("");
-        $("#d").html("");
+        $("#a").hide();
+        $("#b").hide();
+        $("#c").hide();
+        $("#d").hide();
       } else {
         $("#query").html(data[0].query);
+        $("#a").show();
+        $("#b").show();
+        $("#c").show();
+        $("#d").show();
         $("#a").html(data[0].a);
         $("#b").html(data[0].b);
         $("#c").html(data[0].c);
@@ -54,10 +63,10 @@ $("p").on("click", function() {
     url: answerURL
   }).then(function(data) {
     $("#query").html(data.answer);
-    $("#a").html("");
-    $("#b").html("");
-    $("#c").html("");
-    $("#d").html("");
+    $("#a").hide();
+    $("#b").hide();
+    $("#c").hide();
+    $("#d").hide();
     setTimeout(function() {
       location.reload();
     }, 2000);
