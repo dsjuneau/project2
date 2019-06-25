@@ -67,7 +67,6 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/questions", function(req, res) {
-    db.Question.destroy({ where: {} });
-    db.Team.destroy({ where: {} });
+    db.sequelize.sync({ force: true });
   });
 };

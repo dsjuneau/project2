@@ -70,7 +70,6 @@ $("#subQuestion").on("click", e => {
 });
 
 $("#adminQuestion").on("click", () => {
-
   var question = {
     query: $("#newQuestion").val(),
     a: $("#choiceA").val(),
@@ -85,8 +84,7 @@ $("#adminQuestion").on("click", () => {
     method: "POST",
     data: question
   });
-
-})
+});
 
 $("#resetGame").on("click", () => {
   $.ajax({

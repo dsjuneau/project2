@@ -11,6 +11,7 @@ function getQuestionId() {
 }
 
 $("#getQuestion").on("click", () => {
+  console.log("hitting");
   let questionId = getQuestionId();
   let questionURL =
     "/api/quiz/" + localStorage.getItem("teamId") + "/" + questionId;
@@ -21,7 +22,7 @@ $("#getQuestion").on("click", () => {
       },
       type: "GET",
       url: questionURL
-    }).then(function (data) {
+    }).then(function(data) {
       if (data[0] === undefined) {
         localStorage.setItem("qid", questionId - 1);
         $("#query").html("Waiting for question...");
@@ -40,7 +41,7 @@ $("#getQuestion").on("click", () => {
   }
 });
 
-$("p").on("click", function () {
+$("p").on("click", function() {
   let choice = $(this).attr("id");
   let teamId = localStorage.getItem("teamId");
   let questionId = localStorage.getItem("qid");
@@ -51,18 +52,19 @@ $("p").on("click", function () {
     },
     type: "POST",
     url: answerURL
-  }).then(function (data) {
+  }).then(function(data) {
     $("#query").html(data.answer);
     $("#a").html("");
     $("#b").html("");
     $("#c").html("");
     $("#d").html("");
-    setTimeout(function () {
+    setTimeout(function() {
       location.reload();
     }, 2000);
   });
   // Add in the response here and update the score.
 });
 
-
-$('head').append('<link href="/styles/quiz.css" rel="stylesheet" type="text/css">');
+$("head").append(
+  '<link href="/styles/quiz.css" rel="stylesheet" type="text/css">'
+);
