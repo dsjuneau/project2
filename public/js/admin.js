@@ -80,8 +80,6 @@ $("#adminQuestion").on("click", () => {
     correct: $("#correctChoice").val()
   };
 
-  question;
-
   $.ajax({
     url: "/api/questions",
     method: "POST",
@@ -89,3 +87,12 @@ $("#adminQuestion").on("click", () => {
   });
 
 })
+
+$("#resetGame").on("click", () => {
+  $.ajax({
+    url: "/api/questions",
+    method: "DELETE",
+    data: questionGlobal
+  });
+  $(".card-text").html("");
+});
