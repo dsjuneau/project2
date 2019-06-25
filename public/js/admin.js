@@ -68,3 +68,24 @@ $("#subQuestion").on("click", e => {
     $(".card-text").html("");
   }
 });
+
+$("#adminQuestion").on("click", () => {
+
+  var question = {
+    query: $("#newQuestion").val(),
+    a: $("#choiceA").val(),
+    b: $("#choiceB").val(),
+    c: $("#choiceC").val(),
+    d: $("#choiceD").val(),
+    correct: $("#correctChoice").val()
+  };
+
+  question;
+
+  $.ajax({
+    url: "/api/questions",
+    method: "POST",
+    data: question
+  });
+
+})

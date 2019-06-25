@@ -53,11 +53,27 @@
                 <button type="button" id="generateQuest" class="btn btn-primary
                 mb-3 round">Generate Questions</button>
                 <hr>
-                <div class="form-group">
-                    <label for="question">Add Questions</label>
-                    <input type="text" class="form-control" id="newQuestion" aria-describedby="userQuestion">
-                    <button type="button" class="btn btn-primary mt-3" id="addQuestion">Add</button>
-                </div>
+                <form action="">
+                    <div class="form-group">
+                        <label for="question">Add Questions</label>
+                        <div class="form-group">
+                            <label for="question">Question</label>
+                            <input type="text" class="form-control" id="newQuestion" aria-describedby="userQuestion">
+                        </div>
+                        <div class="form-group adminChoice">
+                            <label for="question">A: </label>
+                            <input type="text" class="form-control" id="choiceA" aria-describedby="choice">
+                            <label for="question">B: </label>
+                            <input type="text" class="form-control" id="choiceB" aria-describedby="choice">
+                            <label for="question">C: </label>
+                            <input type="text" class="form-control" id="choiceC" aria-describedby="choice">
+                            <label for="question">D: </label>
+                            <input type="text" class="form-control" id="choiceD" aria-describedby="choice">
+                            <label for="question">Correct Choice: </label>
+                            <input type="text" class="form-control" id="correctChoice" aria-describedby="choice">
+                            <button type="button" class="btn btn-primary mt-3" id="adminQuestion">Add</button>
+                        </div>
+                </form>
             </div>
         </div>
         <div class="card mt-3">
