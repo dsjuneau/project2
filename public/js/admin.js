@@ -68,3 +68,12 @@ $("#subQuestion").on("click", e => {
     $(".card-text").html("");
   }
 });
+
+$("#resetGame").on("click", () => {
+  $.ajax({
+    url: "/api/questions",
+    method: "DELETE",
+    data: questionGlobal
+  });
+  $(".card-text").html("");
+});
