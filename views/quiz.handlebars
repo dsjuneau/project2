@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/public/styles/quiz.css">
+
 <div class="container">
     <div class="row">
         <h5 class="col-md">Welcome, {{this.teamName}}. Your score is: {{this.score}} Points.</h5>
@@ -8,34 +10,17 @@
     <button id="getQuestion">Get Question</button>
 
 </div>
-<div class="container">
+<div class="container quiz">
     <hr>
-    <div class="row">
-        <div class="col-md">
-            <p id="query"></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md">
-            <p id="a"></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md">
-            <p id="b"></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md">
-            <p id="c"></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md">
-            <p id="d"></p>
-        </div>
-    </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <h4 class="questionDis" id="query"></h4>
 
-    <script src="/js/start.js">
-    </script>
+    <p class="btn btn-primary" id="a"></p>
+    <p class="btn btn-primary" id="b"></p>
+    <p class="btn btn-primary" id="c"></p>
+    <p class="btn btn-primary" id="d"></p>
+
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="/js/start.js">
+</script>

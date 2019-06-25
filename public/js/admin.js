@@ -69,6 +69,25 @@ $("#subQuestion").on("click", e => {
   }
 });
 
+$("#adminQuestion").on("click", () => {
+
+  var question = {
+    query: $("#newQuestion").val(),
+    a: $("#choiceA").val(),
+    b: $("#choiceB").val(),
+    c: $("#choiceC").val(),
+    d: $("#choiceD").val(),
+    correct: $("#correctChoice").val()
+  };
+
+  $.ajax({
+    url: "/api/questions",
+    method: "POST",
+    data: question
+  });
+
+})
+
 $("#resetGame").on("click", () => {
   $.ajax({
     url: "/api/questions",
